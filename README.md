@@ -1,6 +1,6 @@
 # Camera Images - Deployment Tooling
 
-The deployment tooling for the [camera-images](/jonhiggs/rb-test) project
+The deployment tooling for the [Camera Images](/jonhiggs/rb-test) project.
 
 ## Usage
 
