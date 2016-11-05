@@ -13,7 +13,20 @@ Make sure that the following environment variables are properly set:
 
 ## Usage
 
-To generate a new set of HTML files and publish them into your S3 bucket, run `make publish`.
+Environment Variables:
+
+- `INPUT_XML`: A file or URL where the input XML can be sourced
+- `MAX_IMAGES`: The number of thumbnails to show per page
+
+Generate and publish new files into your S3 bucket:
+```ShellSession
+    make publish INPUT_XML='<url_or_file>' MAX_IMAGES='10'
+```
+
+Get the origin URL:
+```ShellSession
+    make cfn_origin_address
+```
 
 ## Testing
 
