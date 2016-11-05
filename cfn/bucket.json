@@ -1,0 +1,35 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Camera Images static website",
+
+  "Parameters": {
+    "BucketName": {
+      "Type" : "String",
+      "Description" : "The name of the bucket to create",
+      "AllowedPattern": "^[a-z0-9\\-]+$",
+      "ConstraintDescription": "Only alphanumeric or '-' characters"
+    }
+  },
+
+  "Resources": {
+    "Bucket": {
+      "Type" : "AWS::S3::Bucket",
+      "Properties" : {
+        "AccessControl" : "PublicRead",
+        "BucketName" : { "Ref": "BucketName" },
+        "WebsiteConfiguration": {
+          "IndexDocument": "index.html",
+          "ErrorDocument": "error.html"
+        }
+      }
+    }
+  },
+
+  "Outputs": {
+    "Bucket": {
+      "Description": "The S3 bucket holding the files",
+      "Value" : { "Ref" : "BucketName" }
+    }
+  }
+}
+
