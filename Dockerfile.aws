@@ -1,6 +1,0 @@
-FROM jakesys/aws:latest
-
-#RUN apk add --update libxml2 libxml2-dev  gcc g++ make \
-#  && rm -rf /var/cache/apk/*
-
-CMD [ "/bin/sh" ]
