@@ -40,3 +40,6 @@ cfn:
 cfn_update:
 	@make -C ./cfn stack ACTION=update
 
+cfn_origin_address:
+	@make -C ./cfn origin_address
+

@@ -29,6 +29,17 @@
     "Bucket": {
       "Description": "The S3 bucket holding the files",
       "Value" : { "Ref" : "BucketName" }
+    },
+
+    "OriginAddress": {
+      "Description": "Address to access files",
+      "Value": { "Fn::Join": [ "", [
+        "https://s3-",
+        { "Ref": "AWS::Region" },
+        ".amazonaws.com/",
+        { "Ref": "BucketName" },
+        "/index.html"
+      ] ] }
     }
   }
 }

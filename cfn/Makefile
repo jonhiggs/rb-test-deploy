@@ -16,3 +16,8 @@ stack:
 	aws cloudformation wait stack-${ACTION}-complete \
 	  --stack-name $(STACK_NAME)
 
+origin_address:
+	@aws cloudformation describe-stacks \
+		--stack-name ${STACK_NAME} \
+		--query 'Stacks[].Outputs[?OutputKey==`OriginAddress`].OutputValue' \
+		--output text
