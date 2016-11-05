@@ -12,7 +12,10 @@ export AWS_DEFAULT_REGION=ap-southeast-2
 .PHONY: cfn cfn_update
 
 publish: generate
-	${AWS_CMD} s3 sync --acl public-read /tmp/html/ s3://${BUCKET_NAME}
+	@${AWS_CMD} s3 sync                    \
+		--acl public-read                  \
+		--delete                           \
+		/tmp/html/ s3://${BUCKET_NAME}
 
 generate: build volume
 	@${DOCKER_CMD} generate:index
