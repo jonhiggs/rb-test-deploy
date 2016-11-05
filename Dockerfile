@@ -12,4 +12,4 @@ RUN mkdir -p /tmp/html
 VOLUME /tmp/html
 
 ENTRYPOINT [ "/usr/local/bin/rake" ]
-CMD ["-t"]
+CMD ["-T"]
