@@ -1,15 +1,17 @@
 TAG = rb-test
 VOLUME = ${TAG}-html
 BUCKET_NAME = rb-test-jonhiggs
-ENV_FILE = ./env.list
-DOCKER_CMD = docker run --volume ${VOLUME}:/tmp/html/ --env-file $(ENV_FILE) --rm=true ${TAG}:latest
+DOCKER_CMD = docker run --volume ${VOLUME}:/tmp/html/ -e INPUT_XML -e MAX_IMAGES --rm=true ${TAG}:latest
 AWS_CMD = docker run -it --volume ${VOLUME}:/tmp/html/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION jakesys/aws
 
 export AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=ap-southeast-2
 
-.PHONY: cfn cfn_update
+export INPUT_XML=http://take-home-test.herokuapp.com/api/v1/works.xml
+export MAX_IMAGES=10
+
+.PHONY: cfn cfn_update generate build volume test publish
 
 publish: generate
 	@${AWS_CMD} s3 sync                    \
