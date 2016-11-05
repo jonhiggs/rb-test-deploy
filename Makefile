@@ -18,7 +18,7 @@ publish: generate
 		/tmp/html/ s3://${BUCKET_NAME}
 
 generate: build volume
-	@${DOCKER_CMD} generate:index
+	@${DOCKER_CMD} generate:clean generate:index generate:makes generate:models
 
 build:
 	@docker build -t ${TAG} .
